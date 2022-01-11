@@ -18,10 +18,11 @@
 
         <ImageButton
             android:id="@+id/back"
-            android:layout_width="12dp"
             android:layout_gravity="bottom"
-            android:layout_height="19dp"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
             android:layout_marginLeft="20dp"
+            android:src="@color/white"
  />
 
         <View
