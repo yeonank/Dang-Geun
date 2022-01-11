@@ -1,17 +1,17 @@
 package com.example.diary_recycler
 
-import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diary_recycler.databinding.FragmentHomeBinding
 
-class MainFragment : Fragment() {
+class HomeFragment : Fragment() {
     lateinit var swipeadapter: SwipeAdapter
     val datas = mutableListOf<SwipeData>()
     private val binding: FragmentHomeBinding by lazy {
@@ -39,6 +39,12 @@ class MainFragment : Fragment() {
         binding.rvProfile.apply {
             layoutManager = LinearLayoutManager(context)
 
+        }
+        binding.floatingActionButton.setOnClickListener{
+            activity?.let{
+                val intent = Intent(context, WriteActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         datas.apply {

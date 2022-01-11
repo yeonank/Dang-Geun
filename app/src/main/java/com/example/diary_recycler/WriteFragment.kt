@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.diary_recycler.databinding.ActivityWriteBinding
+import com.example.diary_recycler.databinding.FragmentChatBinding
 import com.example.diary_recycler.databinding.FragmentHomeBinding
 //import com.google.firebase.database.ktx.database
 //import com.google.firebase.ktx.Firebase
@@ -13,8 +14,8 @@ import com.example.diary_recycler.databinding.FragmentHomeBinding
 class WriteFragment: Fragment() {
 
     //val database = Firebase.database
-    private val binding: ActivityWriteBinding by lazy {
-        ActivityWriteBinding.inflate(
+    private val binding: FragmentChatBinding by lazy {
+        FragmentChatBinding.inflate(
             layoutInflater
         )
     }
@@ -24,13 +25,7 @@ class WriteFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val title_et= binding.titleBtn
-        val content_et=binding.contentsBtn
 
-        binding.button.setOnClickListener{
-            title_et.text
-          //  database.
-        }
         return binding.root
 
 }

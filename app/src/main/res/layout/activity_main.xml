@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
         <FrameLayout
@@ -21,10 +22,13 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_gravity="bottom"
-
+            android:background="@color/white"
+            android:splitMotionEvents="false"
             app:labelVisibilityMode="labeled"
+            app:itemTextColor="@drawable/nav_item_color"
             app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:itemIconTint="@drawable/nav_item_color"
             app:menu="@menu/menu_bottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,10 @@
 package com.example.diary_recycler
 
-import android.graphics.Insets.add
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.diary_recycler.databinding.ActivityMainBinding
-import com.example.diary_recycler.databinding.ItemSwipelistBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener  {
@@ -30,7 +24,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         binding.bottomNavigationView.selectedItemId = R.id.menu_name
         // HOME as default tab
         supportFragmentManager.beginTransaction().add(R.id.frame_layout,
-            MainFragment(),"home"
+            HomeFragment(),"home"
         ).commit()
         // Launch app with HOME selected as default start tab
     }
@@ -39,7 +33,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         when(p0.itemId){
             R.id.menu_name ->{
-                val fragmentA = MainFragment()
+                val fragmentA = HomeFragment()
                 transaction.replace(R.id.frame_layout,fragmentA, "home")
             }
             R.id.menu_tag -> {
@@ -55,6 +49,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         transaction.addToBackStack(null)
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
         transaction.commit()
+
         return true
     }
 
