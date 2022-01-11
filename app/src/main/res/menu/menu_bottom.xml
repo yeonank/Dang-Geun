@@ -5,16 +5,16 @@
     <item
         android:id="@+id/menu_name"
         android:icon="@drawable/home"
-        android:title="home" />
+        android:title="HOME" />
 
     <item
         android:id="@+id/menu_tag"
         android:icon="@drawable/chat"
-        android:title="chat" />
+        android:title="CHAT" />
 
     <item
         android:id="@+id/menu_cal"
         android:icon="@drawable/profile"
-        android:title="profile" />
+        android:title="MY" />
 
 </menu>

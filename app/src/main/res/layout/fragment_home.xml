@@ -37,6 +37,7 @@
             android:layout_gravity="bottom"
             android:textColor="@color/black"
             android:textSize="16dp"
+            android:textStyle="bold"
             android:text="게시판" />
 
         <View
@@ -59,10 +60,9 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:layout_margin="20dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/plus" />
+        android:src="@drawable/plus" />
 
     <com.baoyz.widget.PullRefreshLayout
         android:id="@+id/swipe_layout"
@@ -76,7 +76,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical"
-
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_swipelist">
 

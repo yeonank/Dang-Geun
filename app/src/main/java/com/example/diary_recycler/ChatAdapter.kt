@@ -11,11 +11,12 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAdapter.ViewHolder>() {
+
+class ChatAdapter (private val context: Context) : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 
     var datas = mutableListOf<SwipeData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_swipelist,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_chat,parent,false)
         return ViewHolder(view)
     }
 
@@ -23,11 +24,7 @@ class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAd
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(datas[position])
-        holder.itemView.setOnClickListener{
-
-        val intent = Intent(holder.itemView?.context, PostActivity::class.java)
-        ContextCompat.startActivity(holder.itemView.context, intent, null)
-    }}
+  }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

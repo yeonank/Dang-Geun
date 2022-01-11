@@ -1,19 +1,21 @@
 package com.example.diary_recycler
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.diary_recycler.databinding.FragmentProfileBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.diary_recycler.databinding.FragmentChatBinding
 
-class ProfileFragment : Fragment() {
-    lateinit var swipeadapter: ProfileAdapter
+
+class ChatFragment: Fragment() {
+    lateinit var swipeadapter: ChatAdapter
     val datas = mutableListOf<SwipeData>()
-    private val binding: FragmentProfileBinding by lazy {
-        FragmentProfileBinding.inflate(
+    private val binding: FragmentChatBinding by lazy {
+        FragmentChatBinding.inflate(
             layoutInflater
         )
     }
@@ -30,14 +32,15 @@ class ProfileFragment : Fragment() {
 
 
     private fun initRecycler() {
-        swipeadapter = ProfileAdapter(requireContext())
+        swipeadapter = ChatAdapter(requireContext())
 
-        binding.recyclerView.adapter = swipeadapter
+        binding.rvProfile.adapter = swipeadapter
 
-        binding.recyclerView.apply {
-            layoutManager = GridLayoutManager(context,3)
+        binding.rvProfile.apply {
+            layoutManager = LinearLayoutManager(context)
 
         }
+
 
         datas.apply {
             add(SwipeData(img = R.drawable.placeholder, name = "mary", age = "24"))
@@ -53,4 +56,3 @@ class ProfileFragment : Fragment() {
         }
     }
 }
-

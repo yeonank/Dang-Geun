@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 transaction.replace(R.id.frame_layout,fragmentA, "home")
             }
             R.id.menu_tag -> {
-                val fragmentB = WriteFragment()
+                val fragmentB = ChatFragment()
                 transaction.replace(R.id.frame_layout,fragmentB, "chat")
             }
             R.id.menu_cal -> {
