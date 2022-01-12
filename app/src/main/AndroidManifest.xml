@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Diary_Recycler">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WriteActivity" />
-        <activity android:name=".PostActivity" />
-        <activity android:name=".ChatActivity" />
+        <activity android:name=".view.activity.WriteActivity" />
+        <activity android:name=".view.activity.PostActivity" />
+        <activity android:name=".view.activity.ChatActivity" />
     </application>
 
 </manifest>

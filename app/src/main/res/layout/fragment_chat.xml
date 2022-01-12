@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="56dp"
-    tools:context=".MainActivity">
+    tools:context=".view.activity.MainActivity">
     <LinearLayout
         android:id="@+id/wrap"
         android:layout_width="match_parent"

@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.diary_recycler.view.activity.PostActivity
 
 class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAdapter.ViewHolder>() {
 
