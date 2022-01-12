@@ -1,14 +1,13 @@
-package com.example.diary_recycler
+package com.example.diary_recycler.view.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.diary_recycler.databinding.ActivityChatBinding
-import com.example.diary_recycler.databinding.ActivityWriteBinding
+import com.example.diary_recycler.databinding.ActivityPostBinding
 
-class ChatActivity : AppCompatActivity(){
+class PostActivity : AppCompatActivity(){
 
-    private val binding: ActivityChatBinding by lazy {
-        ActivityChatBinding.inflate(
+    private val binding: ActivityPostBinding by lazy {
+        ActivityPostBinding.inflate(
             layoutInflater
         )
     }
@@ -16,8 +15,11 @@ class ChatActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
         binding.back.setOnClickListener{
             finish()
         }
+        binding.button2.setOnClickListener {
 
+        }
     }}

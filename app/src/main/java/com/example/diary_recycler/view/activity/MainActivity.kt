@@ -1,10 +1,16 @@
-package com.example.diary_recycler
+package com.example.diary_recycler.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.FragmentTransaction
+import com.example.diary_recycler.R
+import com.example.diary_recycler.SwipeAdapter
+import com.example.diary_recycler.SwipeData
 import com.example.diary_recycler.databinding.ActivityMainBinding
+import com.example.diary_recycler.view.fragment.ChatFragment
+import com.example.diary_recycler.view.fragment.HomeFragment
+import com.example.diary_recycler.view.fragment.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener  {

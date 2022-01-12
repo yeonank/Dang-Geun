@@ -1,4 +1,4 @@
-package com.example.diary_recycler
+package com.example.diary_recycler.view.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
