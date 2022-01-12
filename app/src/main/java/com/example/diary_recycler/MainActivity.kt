@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         binding.bottomNavigationView.setOnNavigationItemSelectedListener(this)
         binding.bottomNavigationView.selectedItemId = R.id.menu_name
         // HOME as default tab
-        supportFragmentManager.beginTransaction().add(R.id.frame_layout,
+        supportFragmentManager.beginTransaction().add(
+            R.id.frame_layout,
             HomeFragment(),"home"
         ).commit()
         // Launch app with HOME selected as default start tab

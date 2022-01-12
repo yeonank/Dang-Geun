@@ -24,6 +24,11 @@ class ChatAdapter (private val context: Context) : RecyclerView.Adapter<ChatAdap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(datas[position])
+        holder.itemView.setOnClickListener{
+
+            val intent = Intent(holder.itemView?.context, ChatActivity::class.java)
+            ContextCompat.startActivity(holder.itemView.context, intent, null)
+        }
   }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
