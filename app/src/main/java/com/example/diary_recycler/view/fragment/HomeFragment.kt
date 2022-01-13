@@ -11,12 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diary_recycler.R
 import com.example.diary_recycler.SwipeAdapter
 import com.example.diary_recycler.SwipeData
+import com.example.diary_recycler.WriteData
 import com.example.diary_recycler.databinding.FragmentHomeBinding
 import com.example.diary_recycler.view.activity.WriteActivity
+import java.text.SimpleDateFormat
 
 class HomeFragment : Fragment() {
     lateinit var swipeadapter: SwipeAdapter
-    val datas = mutableListOf<SwipeData>()
+    val datas = mutableListOf<WriteData>()
+
     private val binding: FragmentHomeBinding by lazy {
         FragmentHomeBinding.inflate(
             layoutInflater
@@ -43,6 +46,8 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
 
         }
+
+        //relate
         binding.floatingActionButton.setOnClickListener{
             activity?.let{
                 val intent = Intent(context, WriteActivity::class.java)
@@ -50,14 +55,16 @@ class HomeFragment : Fragment() {
             }
         }
 
+        val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm")
+
         datas.apply {
-            add(SwipeData(img = R.drawable.placeholder, name = "mary", age = "24"))
-            add(SwipeData(img = R.drawable.placeholder, name = "jenny", age = "24"))
+            add(WriteData(1, "hello", "hi", System.currentTimeMillis()))
+            /*add(SwipeData(img = R.drawable.placeholder, name = "jenny", age = "24"))
             add(SwipeData(img = R.drawable.placeholder, name = "jhon", age = "24"))
             add(SwipeData(img = R.drawable.placeholder, name = "ruby", age = "24"))
-            add(SwipeData(img = R.drawable.placeholder, name = "yuna", age = "24"))
+            add(SwipeData(img = R.drawable.placeholder, name = "yuna", age = "24"))*/
 
-            swipeadapter.datas = datas
+            swipeadapter.datas = datas//put writedata into swipeadater
             Log.e("errer",swipeadapter.itemCount.toString())
             swipeadapter.notifyDataSetChanged()
 
