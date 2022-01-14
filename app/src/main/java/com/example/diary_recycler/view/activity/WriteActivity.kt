@@ -12,8 +12,8 @@ import com.example.diary_recycler.databinding.ActivityMainBinding
 import com.example.diary_recycler.databinding.ActivityWriteBinding
 import com.example.diary_recycler.view.fragment.HomeFragment
 
-class WriteActivity : AppCompatActivity(){
-    val helper = SqliteHelper(this,"memo",null,1)
+class WriteActivity() : AppCompatActivity(){
+    val helper = SqliteHelper(this,"article",null,1)
     //var adapter = HomeFragment().swipeadapter
     //여기다시보기
 
@@ -25,8 +25,6 @@ class WriteActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        //이부분에서 HomeFragment의 SwipeAdapter을 사용해야 함.
         var adapter = SwipeAdapter(this)
         Log.e("this is writeactivity", "1")
         adapter.datas.addAll(helper.selectArticle())
@@ -51,6 +49,7 @@ class WriteActivity : AppCompatActivity(){
             }//put datas into helper
             adapter.datas.clear()
             adapter.datas.addAll(helper.selectArticle())
+            helper.selectArticle()
             //clear writing form
 
             adapter.notifyDataSetChanged()

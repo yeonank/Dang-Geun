@@ -51,7 +51,7 @@ class SqliteHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
         }
         cursor.close()
         rd.close()
-        Log.e("datas", list[list.size -1].id.toString())
+        Log.e("datas", list[list.size-1].id.toString())
         return list
     }
 
