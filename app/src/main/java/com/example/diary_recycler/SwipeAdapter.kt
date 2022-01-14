@@ -21,7 +21,7 @@ class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAd
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_swipelist,parent,false)
         return ViewHolder(view)
-        Log.e("*******************", "I'm here!1")
+        Log.e("SwipeAdater.createView", "I'm here!1")
     }
 
     override fun getItemCount(): Int = datas.size
@@ -32,7 +32,7 @@ class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAd
         holder.setArticle(article)
 
         //writeData 넣을거임이라고 정의
-        Log.e("*******************", "I'm here!2")
+        Log.e("SwipeAdater.bindhold", "I'm here!2")
         holder.itemView.setOnClickListener{
 
         val intent = Intent(holder.itemView?.context, PostActivity::class.java)
@@ -55,7 +55,7 @@ class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAd
         fun setArticle(article:WriteData){
             txtName.text = article.title
             txtAge.text = article.content
-            Log.e("*******************", "I'm here!3" + txtAge.text)
+            Log.e("SwipeAdater.setArticle", "I'm here!3 " + txtAge.text)
         }
 
     }

@@ -19,6 +19,7 @@ class SqliteHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
 
     //insert 메소드
     fun insertArticle(article: WriteData) {
+        Log.e("this is insertArticle", "hey")
         val values = ContentValues()
         //넘겨줄 컬럼의 매개변수 지정
         values.put("title", article.title)
@@ -36,7 +37,9 @@ class SqliteHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
         val list = mutableListOf<WriteData>()
         val selectAll = "select * from article"
         //읽기전용 데이터베이스 변수
+        Log.e("selectArticle text", "1")
         val rd = readableDatabase
+        Log.e("selectArticle text", "2")
         //데이터를 받아 줍니다.
         val cursor = rd.rawQuery(selectAll, null)
 
