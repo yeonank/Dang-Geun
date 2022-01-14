@@ -57,8 +57,8 @@ final class WriteActivity() : AppCompatActivity(){
             }
 
             finish()
-            val nextIntent = Intent(this, MainActivity::class.java)
-            startActivity(nextIntent)
+          //  val nextIntent = Intent(this, MainActivity::class.java)
+          //  startActivity(nextIntent)
 
         }
 

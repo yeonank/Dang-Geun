@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diary_recycler.*
 import com.example.diary_recycler.databinding.FragmentHomeBinding
 import com.example.diary_recycler.view.activity.WriteActivity
-import java.text.SimpleDateFormat
 
 class HomeFragment : Fragment() {
     lateinit var swipeadapter: SwipeAdapter
@@ -31,8 +30,6 @@ class HomeFragment : Fragment() {
         ): View? {
             // Inflate the layout for this fragment
 
-        initRecycler()
-        Log.e("I'm at HomeFragment", "1")
 
 
         return binding.root
@@ -102,6 +99,12 @@ class HomeFragment : Fragment() {
         }else{
             Log.e("HomeFrag.setArticle", "failed")
         }
+
+    }
+    override fun onResume() {
+        super.onResume()
+        initRecycler()
+        Log.e("I'm at HomeFragment", "1")
 
     }
 }
