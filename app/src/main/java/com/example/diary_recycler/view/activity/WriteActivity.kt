@@ -1,5 +1,6 @@
 package com.example.diary_recycler.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -46,15 +47,19 @@ final class WriteActivity() : AppCompatActivity(){
                 home.swipeadapter = SwipeAdapter(this)
                 home.helper = SqliteHelper(this, "article", null, 1)
                 home.arguments = bundle
-                val transaction = supportFragmentManager.beginTransaction()
-                transaction.add(R.id.rv_profile, home)
-                transaction.commit()
+                //val transaction = supportFragmentManager.beginTransaction()
+               // transaction.add(R.id.frame_layout, home)
+               // transaction.commit()
 
                 home.setArticle()
+
                 Log.e("writeActivity.send", "data sending end")
             }
-            Log.e("writeActivity.send fin", "save button event is successful")
 
             finish()
+            val nextIntent = Intent(this, MainActivity::class.java)
+            startActivity(nextIntent)
+
         }
+
     }}

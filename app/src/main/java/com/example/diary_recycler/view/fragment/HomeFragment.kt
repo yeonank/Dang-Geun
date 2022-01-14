@@ -97,7 +97,6 @@ class HomeFragment : Fragment() {
 
             swipeadapter.notifyDataSetChanged()
             //initRecycler()
-            //swipeadapter.notifyDataSetChanged()
             Log.e("HomeFrag.setArticle", "finished")
 
         }else{

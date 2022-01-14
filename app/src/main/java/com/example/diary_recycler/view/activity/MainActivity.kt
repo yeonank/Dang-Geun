@@ -41,15 +41,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         when(p0.itemId){
             R.id.menu_name ->{
                 val fragmentA = HomeFragment()
-                transaction.replace(R.id.frame_layout,fragmentA, "home")
+                transaction.replace(R.id.frame_layout,fragmentA, "HOME")
             }
             R.id.menu_tag -> {
                 val fragmentB = ChatFragment()
-                transaction.replace(R.id.frame_layout,fragmentB, "chat")
+                transaction.replace(R.id.frame_layout,fragmentB, "CHAT")
             }
             R.id.menu_cal -> {
                 val fragmentC = ProfileFragment()
-                transaction.replace(R.id.frame_layout,fragmentC, "profile")
+                transaction.replace(R.id.frame_layout,fragmentC, "MY")
             }
 
         }
