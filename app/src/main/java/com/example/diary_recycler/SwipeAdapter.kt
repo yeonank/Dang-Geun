@@ -30,6 +30,8 @@ class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAd
         //holder.bind(datas[position])
         val article:WriteData = datas.get(position)
         holder.setArticle(article)
+
+        //writeData 넣을거임이라고 정의
         Log.e("*******************", "I'm here!2")
         holder.itemView.setOnClickListener{
 

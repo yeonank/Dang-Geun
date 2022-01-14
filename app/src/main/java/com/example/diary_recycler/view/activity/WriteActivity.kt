@@ -12,8 +12,10 @@ import com.example.diary_recycler.databinding.ActivityMainBinding
 import com.example.diary_recycler.databinding.ActivityWriteBinding
 import com.example.diary_recycler.view.fragment.HomeFragment
 
-class WriteActivity() : AppCompatActivity(){
+class WriteActivity : AppCompatActivity(){
     val helper = SqliteHelper(this,"memo",null,1)
+    //var adapter = HomeFragment().swipeadapter
+    //여기다시보기
 
     private val binding: ActivityWriteBinding by lazy {
         ActivityWriteBinding.inflate(
@@ -24,31 +26,24 @@ class WriteActivity() : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        // is needed?
-        val adapter = SwipeAdapter(this);
+        //이부분에서 HomeFragment의 SwipeAdapter을 사용해야 함.
+        var adapter = SwipeAdapter(this)
+        Log.e("this is writeactivity", "1")
         adapter.datas.addAll(helper.selectArticle())
-        //
+        //저장한 데이터 select해서 어뎁터에
 
         adapter.helper = helper
 
-        /*swipeadapter = SwipeAdapter(requireContext())
-
-        binding.rvProfile.adapter = swipeadapter
-
-        binding.rvProfile.apply {
-            layoutManager = LinearLayoutManager(context)
-
-        }*/
         val title_et= binding.titleBtn
         val content_et=binding.contentsBtn
         binding.back.setOnClickListener{
             finish()
         }
 
-        //save writings
+        //글 저장
         binding.button.setOnClickListener {
             title_et.text
-
+            //helper에 데이터 insert
             if(content_et.text.toString().isNotEmpty()){
                 val article = WriteData(null,title_et.text.toString(), content_et.text.toString(),System.currentTimeMillis())
                 helper.insertArticle(article)

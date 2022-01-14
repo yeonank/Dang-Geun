@@ -33,6 +33,7 @@ class HomeFragment : Fragment() {
             // Inflate the layout for this fragment
 
         initRecycler()
+        Log.e("I'm at HomeFragment", "1")
         return binding.root
         }
 
@@ -47,25 +48,29 @@ class HomeFragment : Fragment() {
 
         }
 
-        //relate
+        //+버튼 누르면
         binding.floatingActionButton.setOnClickListener{
             activity?.let{
+                Log.e("you are here", "1")
                 val intent = Intent(context, WriteActivity::class.java)
                 startActivity(intent)
+                Log.e("you are here", "2")
             }
+
+            initRecycler()//완료 버튼 누르면 데이터 바인딩
         }
 
         val sdf = SimpleDateFormat("yyyy/MM/dd hh:mm")
 
         datas.apply {
-            add(WriteData(1, "hello", "hi", System.currentTimeMillis()))
+            add(WriteData(1, "연정", "호롤롤로", System.currentTimeMillis()))
             /*add(SwipeData(img = R.drawable.placeholder, name = "jenny", age = "24"))
             add(SwipeData(img = R.drawable.placeholder, name = "jhon", age = "24"))
             add(SwipeData(img = R.drawable.placeholder, name = "ruby", age = "24"))
             add(SwipeData(img = R.drawable.placeholder, name = "yuna", age = "24"))*/
 
             swipeadapter.datas = datas//put writedata into swipeadater
-            Log.e("errer",swipeadapter.itemCount.toString())
+            Log.e("at HomeFragment apply",swipeadapter.itemCount.toString())
             swipeadapter.notifyDataSetChanged()
 
         }
