@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.daimajia.swipe.SwipeLayout
 import com.example.diary_recycler.view.activity.DetailActivity
 
 class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAdapter.ViewHolder>() {
@@ -28,19 +29,24 @@ class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAd
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //holder.bind(datas[position])
         val article : WriteData = datas.get(position)
-        holder.setArticle(article)
+        holder.bind(article)
+
 
         //writeData 넣을거임이라고 정의
         Log.e("SwipeAdater.bindhold", "I'm here!2")
-        holder.itemView.setOnClickListener{
 
-        val intent = Intent(holder.itemView?.context, DetailActivity::class.java)
+        val swipelayout :SwipeLayout = holder.itemView.findViewById(R.id.swipe_layout)
+        //swipelayout.addSwipeListener(SwipeLayout.SwipeListener)
+
+            holder.itemView.setOnClickListener{
+            val intent = Intent(holder.itemView?.context, DetailActivity::class.java)
             intent.putExtra("id",position)
-        ContextCompat.startActivity(holder.itemView.context, intent, null)
+            ContextCompat.startActivity(holder.itemView.context, intent, null)
+
     }}
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+        private val swipelayout :SwipeLayout = itemView.findViewById(R.id.swipe_layout)
         private val txtName: TextView = itemView.findViewById(R.id.tv_rv_name)
         private val txtAge: TextView = itemView.findViewById(R.id.tv_rv_age)
         private val imgProfile: ImageView = itemView.findViewById(R.id.img_rv_photo)
@@ -52,9 +58,10 @@ class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAd
 
         }*/
 
-        fun setArticle(article:WriteData){
+        fun bind(article:WriteData){
             txtName.text = article.title
             txtAge.text = article.content
+
             Log.e("SwipeAdater.setArticle", "I'm here!3 " + txtAge.text)
         }
 
