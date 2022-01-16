@@ -31,6 +31,9 @@ class DetailActivity : AppCompatActivity(){
         binding.back.setOnClickListener{
             finish()
         }
+        binding.menu.setOnClickListener{
+
+        }
         binding.button2.setOnClickListener {
 
         }

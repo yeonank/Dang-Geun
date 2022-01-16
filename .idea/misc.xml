@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/drawable/list_back.xml" value="0.133" />
         <entry key="app/src/main/res/drawable/nav_item_color.xml" value="0.2025" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2838541666666667" />
         <entry key="app/src/main/res/layout/activity_post.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2838541666666667" />
