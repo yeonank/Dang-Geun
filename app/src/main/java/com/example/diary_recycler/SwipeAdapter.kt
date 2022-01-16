@@ -10,8 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.diary_recycler.view.activity.PostActivity
+import com.example.diary_recycler.view.activity.DetailActivity
 
 class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAdapter.ViewHolder>() {
 
@@ -21,21 +20,22 @@ class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAd
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_swipelist,parent,false)
         return ViewHolder(view)
-        Log.e("SwipeAdater.createView", "I'm here!1")
+
     }
 
     override fun getItemCount(): Int = datas.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //holder.bind(datas[position])
-        val article:WriteData = datas.get(position)
+        val article : WriteData = datas.get(position)
         holder.setArticle(article)
 
         //writeData 넣을거임이라고 정의
         Log.e("SwipeAdater.bindhold", "I'm here!2")
         holder.itemView.setOnClickListener{
 
-        val intent = Intent(holder.itemView?.context, PostActivity::class.java)
+        val intent = Intent(holder.itemView?.context, DetailActivity::class.java)
+            intent.putExtra("id",position)
         ContextCompat.startActivity(holder.itemView.context, intent, null)
     }}
 
