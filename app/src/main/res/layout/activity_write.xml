@@ -41,11 +41,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contents_btn"
+        app:layout_constraintTop_toBottomOf="@+id/ed_content"
         app:srcCompat="@drawable/placeholder" />
 
     <EditText
-        android:id="@+id/title_btn"
+        android:id="@+id/ed_title"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginHorizontal="20dp"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <EditText
-        android:id="@+id/contents_btn"
+        android:id="@+id/ed_content"
         android:layout_width="match_parent"
         android:textColor="@color/black"
         android:layout_height="350dp"
@@ -76,10 +76,10 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_title" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"

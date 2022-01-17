@@ -43,11 +43,11 @@ final class WriteActivity() : AppCompatActivity(){
         }
 
 
-        val title_et= binding.titleBtn
-        val content_et=binding.contentsBtn
+        val title_et= binding.edTitle
+        val content_et=binding.edContent
 
         //데이터 homeFragment로 전송
-        binding.button.setOnClickListener {
+        binding.btnSave.setOnClickListener {
             if(content_et.text.toString().isNotEmpty()){
                 Log.e("writeActivity.send", "data sending start")
 

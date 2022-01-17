@@ -6,51 +6,19 @@
     android:layout_width="match_parent"
     android:background="#FEEAE6"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/wrap"
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="76dp"
-        android:paddingBottom="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="20dp"
+        android:elevation="1dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/back"
-            android:layout_width="12dp"
-            android:layout_gravity="bottom"
-            android:layout_height="19dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/back" />
-
-        <View
-            android:layout_width="30dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="16dp"
-            android:text=" " />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <ImageButton
-            android:id="@+id/report"
-            android:layout_width="20dp"
-            android:layout_height="4dp"
-            android:layout_gravity="bottom"
-            android:layout_marginHorizontal="20dp" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" >
+    </androidx.appcompat.widget.Toolbar>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
