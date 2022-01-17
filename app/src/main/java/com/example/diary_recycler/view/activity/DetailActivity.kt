@@ -36,8 +36,8 @@ class DetailActivity : AppCompatActivity(){
         helper = SqliteHelper(this, "article", null, 1)
 
         data= helper?.selectArticle()?.get(idx)
-        binding.textView4.setText(data?.title)
-        binding.textView5.setText(data?.content)
+        binding.tvTitle.setText(data?.title)
+        binding.tvContent.setText(data?.content)
         binding.button2.setOnClickListener {
 
         }
