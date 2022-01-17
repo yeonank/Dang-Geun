@@ -1,8 +1,14 @@
 package com.example.diary_recycler.view.activity
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,10 +32,16 @@ final class WriteActivity() : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         Log.e("writeactivity.oncreate", "1")
+        setSupportActionBar(binding.toolbar2)
+        setTitle("글쓰기")
 
-        binding.back.setOnClickListener{
-            finish()
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
+        binding.toolbar2.navigationIcon?.apply {
+
+                setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN)
         }
+
 
         val title_et= binding.titleBtn
         val content_et=binding.contentsBtn
@@ -42,6 +54,7 @@ final class WriteActivity() : AppCompatActivity(){
                 val bundle = Bundle()
                 bundle.putString("content", content_et.text.toString())
                 bundle.putString("title", title_et.text.toString())
+
                 val home = HomeFragment()
 
                 home.swipeadapter = SwipeAdapter(this)
@@ -62,4 +75,18 @@ final class WriteActivity() : AppCompatActivity(){
 
         }
 
-    }}
+    }
+    // actions on click menu items
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        android.R.id.home -> {
+            finish()
+            true
+        }
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
+    }
+
+}
