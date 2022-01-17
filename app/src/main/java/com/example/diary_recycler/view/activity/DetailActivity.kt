@@ -29,19 +29,15 @@ class DetailActivity : AppCompatActivity(){
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.menu)
+     //   supportActionBar!!.setHomeAsUpIndicator(R.drawable.menu)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         val idx = intent.getIntExtra("id",0)
         helper = SqliteHelper(this, "article", null, 1)
 
         data= helper?.selectArticle()?.get(idx)
         binding.textView4.setText(data?.title)
         binding.textView5.setText(data?.content)
-        binding.back.setOnClickListener{
-            finish()
-        }
-        binding.menu.setOnClickListener{
-
-        }
         binding.button2.setOnClickListener {
 
         }
@@ -66,6 +62,10 @@ class DetailActivity : AppCompatActivity(){
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.menu_modify -> {
            // msgShow("Search")
+            true
+        }
+        android.R.id.home -> {
+            finish()
             true
         }
         R.id.menu_delete -> {

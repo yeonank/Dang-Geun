@@ -46,6 +46,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.mediarouter:mediarouter:1.2.5'
     testImplementation 'junit:junit:4.+'
     implementation  'com.daimajia.swipelayout:library:1.2.0@aar'
     implementation  'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
