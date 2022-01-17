@@ -11,6 +11,7 @@ import com.example.diary_recycler.databinding.ActivityMainBinding
 import com.example.diary_recycler.view.fragment.ChatFragment
 import com.example.diary_recycler.view.fragment.HomeFragment
 import com.example.diary_recycler.view.fragment.ProfileFragment
+import com.example.diary_recycler.view.fragment.TestFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener  {
@@ -50,6 +51,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             R.id.menu_cal -> {
                 val fragmentC = ProfileFragment()
                 transaction.replace(R.id.frame_layout,fragmentC, "MY")
+            }
+            R.id.menu_test -> {
+                val fragmentD = TestFragment()
+                transaction.replace(R.id.frame_layout, fragmentD, "TEST")
             }
 
         }
