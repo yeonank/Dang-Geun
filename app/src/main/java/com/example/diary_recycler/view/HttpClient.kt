@@ -1,6 +1,5 @@
 package com.example.diary_recycler.view
 
-import com.example.diary_recycler.RetrofitApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,6 +15,6 @@ public class HttpClient {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val test: RetrofitApi = retrofit.create(RetrofitApi::class.java)
+            //   val test: RetrofitApi = retrofit.create(RetrofitApi::class.java)
     }
 }
