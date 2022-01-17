@@ -78,25 +78,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_btn" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
-        android:text="2022.01.02"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="end"
-        android:textColor="#999999"
-        app:layout_constraintTop_toBottomOf="@+id/contents_btn" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:backgroundTint="#F3857E"
-        android:text="확인"
+        android:text="작성하기"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
