@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.baoyz.widget.PullRefreshLayout
 import com.example.diary_recycler.*
 import com.example.diary_recycler.databinding.FragmentHomeBinding
 import com.example.diary_recycler.view.activity.WriteActivity
@@ -30,7 +31,7 @@ class HomeFragment : Fragment() {
         ): View? {
             // Inflate the layout for this fragment
 
-
+        binding.swipeLayout.setRefreshStyle(PullRefreshLayout.STYLE_CIRCLES)
         binding.swipeLayout.setOnRefreshListener {
             initRecycler()
             binding.swipeLayout.setRefreshing(false)
