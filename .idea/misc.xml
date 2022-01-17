@@ -35,6 +35,7 @@
         <entry key="app/src/main/res/layout/item_message.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/item_profile.xml" value="0.2838541666666667" />
         <entry key="app/src/main/res/layout/item_swipelist.xml" value="0.2838541666666667" />
+        <entry key="app/src/main/res/menu/detail_menu.xml" value="0.20833333333333334" />
         <entry key="app/src/main/res/menu/menu_bottom.xml" value="0.2838541666666667" />
       </map>
     </option>
