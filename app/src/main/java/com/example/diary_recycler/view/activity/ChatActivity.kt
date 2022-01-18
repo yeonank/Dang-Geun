@@ -6,11 +6,15 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.diary_recycler.ChatAdapter
+import com.example.diary_recycler.SwipeAdapter
 import com.example.diary_recycler.databinding.ActivityChatBinding
 import com.example.diary_recycler.databinding.ActivityWriteBinding
 
 class ChatActivity : AppCompatActivity(){
-    internal lateinit var preferences: SharedPreferences
+    lateinit var chatAdapter: ChatAdapter
     private val binding: ActivityChatBinding by lazy {
         ActivityChatBinding.inflate(
             layoutInflater
@@ -20,6 +24,14 @@ class ChatActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+
+        chatAdapter = ChatAdapter(this)//this?
+        binding.messageActivityRecyclerview.adapter = chatAdapter
+
+        binding.messageActivityRecyclerview.apply {
+            layoutManager = LinearLayoutManager(context)
+
+        }
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
