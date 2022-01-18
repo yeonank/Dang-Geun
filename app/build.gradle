@@ -48,6 +48,11 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'androidx.mediarouter:mediarouter:1.2.5'
     testImplementation 'junit:junit:4.+'
+
+    implementation 'com.amazonaws:aws-android-sdk-mobile-client:2.13.5'
+    implementation 'com.amazonaws:aws-android-sdk-cognito:2.13.5'
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.13.5'
+
     implementation  'com.daimajia.swipelayout:library:1.2.0@aar'
     implementation  'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -55,6 +60,5 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-   // implementation "com.google.firebase:firebase-database:20.0.3"
     implementation "androidx.core:core-ktx:1.7.0"
 }
