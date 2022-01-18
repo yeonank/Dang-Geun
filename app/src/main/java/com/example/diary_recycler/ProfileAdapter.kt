@@ -26,7 +26,9 @@ class ProfileAdapter (private val context: Context) : RecyclerView.Adapter<Profi
         private val imgProfile: ImageView = itemView.findViewById(R.id.imageView2)
 
         fun bind(item: SwipeData) {
-            Glide.with(itemView).load(item.img).into(imgProfile)
+            if(item.img==null)
+                Glide.with(itemView).load(R.drawable.placeholder).into(imgProfile)
+            else Glide.with(itemView).load(item.img).centerCrop().into(imgProfile)
 
         }
     }

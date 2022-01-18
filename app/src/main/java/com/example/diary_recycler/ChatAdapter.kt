@@ -41,8 +41,9 @@ class ChatAdapter (private val context: Context) : RecyclerView.Adapter<ChatAdap
         fun bind(item: SwipeData) {
             txtName.text = item.name
             txtAge.text = item.age.toString()
-            Glide.with(itemView).load(item.img).into(imgProfile)
-
+            if(item.img==null)
+                Glide.with(itemView).load(R.drawable.placeholder).into(imgProfile)
+            else Glide.with(itemView).load(item.img).centerCrop().into(imgProfile)
         }
     }
 
