@@ -86,6 +86,7 @@ class WriteActivity() : AppCompatActivity(){
 
 
                 uploadImg()
+
                 val home = HomeFragment()
 
                 home.swipeadapter = SwipeAdapter(this)

@@ -35,7 +35,7 @@ class TestFragment: Fragment() {
     }
 
     fun initTest(){
-        val url = "http://54.180.87.148:52300"
+        val url = "http://13.124.154.227:52970"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(url)
