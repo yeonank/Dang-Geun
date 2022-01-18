@@ -7,6 +7,7 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -49,7 +50,13 @@ class DetailActivity : AppCompatActivity(){
         if(data?.img==null)
             Glide.with(this).load(R.drawable.placeholder).into(binding.imageView4)
         else Glide.with(this).load(data?.img).centerCrop().into(binding.imageView4)
+
+
         binding.button2.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
+            intent.putExtra("seller_name", binding.tvName.text.toString())
+            startActivity(intent)
+            Log.e("detailActivity name:", binding.tvName.text.toString())
 
         }
     }
