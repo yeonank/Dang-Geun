@@ -1,5 +1,6 @@
 package com.example.diary_recycler.view.activity
 
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -9,7 +10,7 @@ import com.example.diary_recycler.databinding.ActivityChatBinding
 import com.example.diary_recycler.databinding.ActivityWriteBinding
 
 class ChatActivity : AppCompatActivity(){
-
+    internal lateinit var preferences: SharedPreferences
     private val binding: ActivityChatBinding by lazy {
         ActivityChatBinding.inflate(
             layoutInflater
