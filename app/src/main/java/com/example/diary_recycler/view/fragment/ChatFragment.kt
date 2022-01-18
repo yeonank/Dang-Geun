@@ -45,11 +45,11 @@ class ChatFragment: Fragment() {
 
 
         datas.apply {
-            add(SwipeData(img = R.drawable.placeholder, name = "mary", age = "24"))
-            add(SwipeData(img = R.drawable.placeholder, name = "jenny", age = "24"))
-            add(SwipeData(img = R.drawable.placeholder, name = "jhon", age = "24"))
-            add(SwipeData(img = R.drawable.placeholder, name = "ruby", age = "24"))
-            add(SwipeData(img = R.drawable.placeholder, name = "yuna", age = "24"))
+            add(SwipeData(img =null, name = "mary", age = "24"))
+            add(SwipeData(img =null, name = "jenny", age = "24"))
+            add(SwipeData(img =null, name = "jhon", age = "24"))
+            add(SwipeData(img =null, name = "ruby", age = "24"))
+            add(SwipeData(img =null, name = "yuna", age = "24"))
 
             swipeadapter.datas = datas
             Log.e("errer",swipeadapter.itemCount.toString())
