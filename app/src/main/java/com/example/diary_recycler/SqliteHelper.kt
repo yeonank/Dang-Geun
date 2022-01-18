@@ -9,7 +9,7 @@ import android.util.Log
 class SqliteHelper(context: Context?, name: String?, factory: SQLiteDatabase.CursorFactory?, version: Int) : SQLiteOpenHelper(context, name, factory, version) {
     override fun onCreate(db: SQLiteDatabase?) {
         val create =
-            "create table article (id integer primary key, title text, content text, datetime integer)"
+            "create table article (id integer primary key, title text, content text, datetime integer, img text)"
         db?.execSQL(create)
     }
 
@@ -25,6 +25,7 @@ class SqliteHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
         values.put("title", article.title)
         values.put("content", article.content)
         values.put("datetime", article.datetime)
+        values.put("img", article.img)
         //쓰기나 수정이 가능한 데이터베이스 변수
         val wd = writableDatabase
         wd.insert("article", null, values)
@@ -49,8 +50,9 @@ class SqliteHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
             val title = cursor.getString(cursor.getColumnIndex("title"))
             val content = cursor.getString(cursor.getColumnIndex("content"))
             val datetime = cursor.getLong(cursor.getColumnIndex("datetime"))
+            val img = cursor.getString(cursor.getColumnIndex("img"))
 
-            list.add(WriteData(id, title, content, datetime))
+            list.add(WriteData(id, title, content, datetime, img))
         }
         cursor.close()
         rd.close()
@@ -65,6 +67,7 @@ class SqliteHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
         values.put("title", article.title)
         values.put("content", article.content)
         values.put("datetime", article.datetime)
+        values.put("img", article.img)
 
         val wd = writableDatabase
         wd.update("article", values, "id=${article.id}", null)

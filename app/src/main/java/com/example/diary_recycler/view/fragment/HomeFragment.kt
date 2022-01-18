@@ -78,6 +78,7 @@ class HomeFragment : Fragment() {
     fun setArticle(){
         var content = arguments?.getString("content")
         var title = arguments?.getString("title")
+        var img = arguments?.getString("img")
         //initRecycler()
         if (content != null) {
             Log.e("HomeFrag.setArticle", content + " " + title)
@@ -85,7 +86,7 @@ class HomeFragment : Fragment() {
                 add(WriteData(1, "first", content, System.currentTimeMillis()))
             }*/
 
-            val article = title?.let { WriteData(null, it, content, System.currentTimeMillis()) }
+            val article = title?.let { WriteData(null, it, content, System.currentTimeMillis(), img ) }
             //helper = SqliteHelper(this, "article", null, 1)
 
             if (article != null) {

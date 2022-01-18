@@ -3,12 +3,14 @@ package com.example.diary_recycler.view.activity
 import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.diary_recycler.R
 import com.example.diary_recycler.SqliteHelper
 import com.example.diary_recycler.WriteData
@@ -31,6 +33,11 @@ class DetailActivity : AppCompatActivity(){
         supportActionBar!!.setDisplayShowTitleEnabled(false)
      //   supportActionBar!!.setHomeAsUpIndicator(R.drawable.menu)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        binding.toolbar.navigationIcon?.apply {
+
+            setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN) //뒤로가기 아이콘 색 설정
+        }
+
 
         val idx = intent.getIntExtra("id",0)
         helper = SqliteHelper(this, "article", null, 1)
@@ -38,6 +45,10 @@ class DetailActivity : AppCompatActivity(){
         data= helper?.selectArticle()?.get(idx)
         binding.tvTitle.setText(data?.title)
         binding.tvContent.setText(data?.content)
+        binding.tvDate.setText(data?.datetime.toString())
+        if(data?.img==null)
+            Glide.with(this).load(R.drawable.placeholder).into(binding.imageView4)
+        else Glide.with(this).load(data?.img).centerCrop().into(binding.imageView4)
         binding.button2.setOnClickListener {
 
         }

@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 import com.daimajia.swipe.SwipeLayout
 import com.example.diary_recycler.view.activity.DetailActivity
 
@@ -61,8 +63,10 @@ class SwipeAdapter (private val context: Context) : RecyclerView.Adapter<SwipeAd
         fun bind(article:WriteData){
             txtName.text = article.title
             txtAge.text = article.content
-
-            Log.e("SwipeAdater.setArticle", "I'm here!3 " + txtAge.text)
+            if(article.img==null)
+                Glide.with(itemView).load(R.drawable.placeholder).into(imgProfile)
+            else Glide.with(itemView).load(article.img).centerCrop().into(imgProfile)
+            Log.e("SwipeAdater.setArticle", "I'm here!3 " + txtAge.text+article.img)
         }
 
     }
