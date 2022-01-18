@@ -80,12 +80,10 @@ class WriteActivity() : AppCompatActivity(){
                       "img",
                       "https://fofuploadtest.s3.ap-northeast-2.amazonaws.com/" + key //aws s3 이미지 uri
                   )
-                  Log.e("이미지 업로드", "확인"+f.toString())
+                    Log.e("이미지 업로드", "확인"+f.toString())
+                    uploadImg()
                 }
                 else bundle.putString("img",null) //이미지 없으면 null로 저장
-
-
-                uploadImg()
 
                 val home = HomeFragment()
 
