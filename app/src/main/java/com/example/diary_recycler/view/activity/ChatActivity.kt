@@ -86,7 +86,7 @@ class ChatActivity : AppCompatActivity(){
             chatAdapter.userName = name
         }
 
-        Log.e("editText: ", binding.messageActivityEditText.toString())
+        Log.e("editText: ", binding.messageActivityEditText.text.toString())
         chatAdapter.notifyDataSetChanged()
         //채팅 입력창 초기화
         binding.messageActivityEditText.setText("")

@@ -65,7 +65,7 @@ class ChatAdapter (private val context: Context) : RecyclerView.Adapter<Recycler
         }*/
   }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    /*inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         /*private val txtName: TextView = itemView.findViewById(R.id.tv_rv_name)
         private val txtAge: TextView = itemView.findViewById(R.id.tv_rv_age)
@@ -78,7 +78,7 @@ class ChatAdapter (private val context: Context) : RecyclerView.Adapter<Recycler
                 Glide.with(itemView).load(R.drawable.placeholder).into(imgProfile)
             else Glide.with(itemView).load(item.img).centerCrop().into(imgProfile)*/
         }
-    }
+    }*/
 
 
 
