@@ -51,7 +51,7 @@ class DetailActivity : AppCompatActivity(){
             Glide.with(this).load(R.drawable.placeholder).into(binding.imageView4)
         else Glide.with(this).load(data?.img).centerCrop().into(binding.imageView4)
 
-
+        //채팅하기 버튼 누르면!
         binding.button2.setOnClickListener {
             val intent = Intent(this, ChatActivity::class.java)
             intent.putExtra("seller_name", binding.tvName.text.toString())

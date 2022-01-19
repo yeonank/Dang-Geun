@@ -51,7 +51,7 @@ class ChatFragment: Fragment() {
             add(SwipeData(img =null, name = "ruby", age = "24"))
             add(SwipeData(img =null, name = "yuna", age = "24"))
 
-            swipeadapter.datas = datas
+            //swipeadapter.datas = datas
             Log.e("errer",swipeadapter.itemCount.toString())
             swipeadapter.notifyDataSetChanged()
 
