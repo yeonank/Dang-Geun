@@ -1,5 +1,6 @@
 package com.example.diary_recycler.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import com.example.diary_recycler.ProfileAdapter
 import com.example.diary_recycler.R
 import com.example.diary_recycler.SwipeData
 import com.example.diary_recycler.databinding.FragmentProfileBinding
+import com.example.diary_recycler.view.activity.SettingActivity
+import com.example.diary_recycler.view.activity.WriteActivity
 
 class ProfileFragment : Fragment() {
     lateinit var swipeadapter: ProfileAdapter
@@ -28,6 +31,12 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
 
         initRecycler()
+        binding.imageButton.setOnClickListener{
+            val settingActivity =  SettingActivity()
+            val intent = Intent(context, settingActivity::class.java)
+            /////////////////////
+            startActivity(intent)
+        }
         return binding.root
     }
 

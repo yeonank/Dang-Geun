@@ -26,6 +26,8 @@
         <activity android:name=".view.activity.WriteActivity" />
         <activity android:name=".view.activity.DetailActivity" />
         <activity android:name=".view.activity.ChatActivity" />
+        <activity android:name=".view.activity.SettingActivity" />
+
         <service android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService" android:enabled="true"/>
     </application>
 
