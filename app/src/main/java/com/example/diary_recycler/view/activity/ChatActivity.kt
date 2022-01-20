@@ -1,5 +1,6 @@
 package com.example.diary_recycler.view.activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -15,11 +16,23 @@ import com.example.diary_recycler.ChatModel
 import com.example.diary_recycler.SwipeAdapter
 import com.example.diary_recycler.databinding.ActivityChatBinding
 import com.example.diary_recycler.databinding.ActivityWriteBinding
+import io.socket.client.IO
+import io.socket.client.Socket
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ChatActivity : AppCompatActivity(){
     lateinit var chatAdapter: ChatAdapter
+    
+    internal lateinit var preferences: SharedPreferences//사용자 이름을 이걸로 저장할까..?
+
+    private var hasConnection: Boolean = false
+    private var thread2: Thread? = null
+    private var startTyping = false
+    private var time = 2
+
+    private var mSocekt: Socket = IO.socket("")
+
 
     private val binding: ActivityChatBinding by lazy {
         ActivityChatBinding.inflate(
@@ -30,6 +43,8 @@ class ChatActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+        preferences = getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
+
         //어댑터 연결
         chatAdapter = ChatAdapter(this)//this?
         binding.messageActivityRecyclerview.adapter = chatAdapter
@@ -37,6 +52,7 @@ class ChatActivity : AppCompatActivity(){
             layoutManager = LinearLayoutManager(context)
 
         }
+        binding.messageActivityRecyclerview.setHasFixedSize(true)
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -73,18 +89,18 @@ class ChatActivity : AppCompatActivity(){
         val getTime = sdf.format(date)
 
         //판매자 이름 가져오기(intent)
-        val name = intent.getStringExtra("seller_name")
+        val name = intent.getStringExtra("seller_name")//인텐트 or preferences
 
         //example에는 원래는 이미지 url이 들어가야할 자리
 
-        val item =
-            name?.let { ChatModel(it, binding.messageActivityEditText.text.toString(), "example", getTime) }
+        val item = preferences.getString("name","")
+            ?.let { ChatModel(it,binding.messageActivityEditText.text.toString(),"example", getTime) }
         if (item != null) {
-            chatAdapter.addItem(item)//리스트에 넣기
+            chatAdapter.addItem(item)//리스트에 메시지 넣기
         }
-        if (name != null) {
+        /*if (name != null) {//shared preferences 대신 넣음
             chatAdapter.userName = name
-        }
+        }*/
 
         Log.e("editText: ", binding.messageActivityEditText.text.toString())
         chatAdapter.notifyDataSetChanged()
