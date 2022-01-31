@@ -2,6 +2,7 @@ package com.example.diary_recycler
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,7 +19,8 @@ import org.w3c.dom.Text
 
 class ChatAdapter (private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val chatContent= mutableListOf<ChatModel>()
-    lateinit var userName: String
+    internal lateinit var preferences: SharedPreferences
+    //lateinit var userName: String
     //lateinit var thisName: String
 
     fun addItem(item: ChatModel) {//아이템 추가
@@ -99,10 +101,10 @@ class ChatAdapter (private val context: Context) : RecyclerView.Adapter<Recycler
     }
 
     override fun getItemViewType(position: Int): Int {//여기서 뷰타입을 1, 2로 바꿔서 지정해줘야 내채팅 너채팅을 바꾸면서 쌓을 수 있음
-        //preferences = context.getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
+        preferences = context.getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
 
         //내 아이디와 arraylist의 name이 같다면 내꺼 아니면 상대꺼
-        return if (chatContent.get(position).name == userName) {
+        return if (chatContent.get(position).name == preferences.getString("name", "")) {
             1
         } else {
             2

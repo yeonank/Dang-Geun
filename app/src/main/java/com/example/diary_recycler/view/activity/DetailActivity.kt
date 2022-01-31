@@ -1,7 +1,9 @@
 package com.example.diary_recycler.view.activity
 
 import android.app.PendingIntent.getActivity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -21,6 +23,7 @@ import com.example.diary_recycler.databinding.ActivityDetailBinding
 class DetailActivity : AppCompatActivity(){
     var helper: SqliteHelper? = null
     var data : WriteData ?= null
+    internal lateinit var preferences: SharedPreferences
 
     private val binding: ActivityDetailBinding by lazy {
         ActivityDetailBinding.inflate(
@@ -35,9 +38,11 @@ class DetailActivity : AppCompatActivity(){
      //   supportActionBar!!.setHomeAsUpIndicator(R.drawable.menu)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         binding.toolbar.navigationIcon?.apply {
-
             setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN) //뒤로가기 아이콘 색 설정
         }
+
+        preferences = getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
+        val editor = preferences!!.edit()
 
 
         val idx = intent.getIntExtra("id",0)
@@ -54,7 +59,8 @@ class DetailActivity : AppCompatActivity(){
         //채팅하기 버튼 누르면!
         binding.button2.setOnClickListener {
             val intent = Intent(this, ChatActivity::class.java)
-            intent.putExtra("seller_name", binding.tvName.text.toString())
+            //intent.putExtra("seller_name", binding.tvName.text.toString())
+            editor.putString("name", binding.tvName.text.toString())
             startActivity(intent)
             Log.e("detailActivity name:", binding.tvName.text.toString())
 
