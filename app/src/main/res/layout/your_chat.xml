@@ -6,53 +6,54 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+    >
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/chat_You_Image"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_weight="1"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/placeholder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/chat_You_Name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginLeft="10dp"
+            android:text="김xx"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/chat_Text"
+            app:layout_constraintStart_toEndOf="@+id/chat_You_Image"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/chat_You_Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="김xx"
-                android:layout_marginLeft="10dp"
-                android:textSize="20dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <TextView
+            android:id="@+id/chat_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/youchat"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="상대가 입력한 내용"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chat_You_Image" />
 
-            <TextView
-                android:id="@+id/chat_Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_margin="10dp"
-                android:background="@drawable/gradient_back"
-                android:gravity="center_vertical"
-                android:padding="5dp"
-                android:text="상대가 입력한 내용"
-                android:textSize="20dp" />
+        <TextView
+            android:id="@+id/chat_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="시간"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chat_Text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/chat_Time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:gravity="center_vertical"
-                android:text="시간" />
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

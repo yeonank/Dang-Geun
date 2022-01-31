@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="메세지 입력"
+            android:textColor="@color/black"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"

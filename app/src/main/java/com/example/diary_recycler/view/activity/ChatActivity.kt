@@ -35,7 +35,7 @@ class ChatActivity : AppCompatActivity(){
     private var startTyping = false
     private var time = 2
 
-    private var mSocket: Socket = IO.socket("http://15.164.169.179:51302")
+    private var mSocket: Socket = IO.socket("http://3.36.48.206:52207")
 
 
     private val binding: ActivityChatBinding by lazy {
