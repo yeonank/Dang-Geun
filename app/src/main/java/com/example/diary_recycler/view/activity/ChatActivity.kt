@@ -22,20 +22,15 @@ import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import org.json.JSONException
 import org.json.JSONObject
+import java.net.URISyntaxException
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ChatActivity : AppCompatActivity(){
     lateinit var chatAdapter: ChatAdapter
-    
     internal lateinit var preferences: SharedPreferences//사용자 이름을 이걸로 저장할까..?
-
     private var hasConnection: Boolean = false
-    private var thread2: Thread? = null
-    private var startTyping = false
-    private var time = 2
-
-    private var mSocket: Socket = IO.socket("http://15.164.169.179:51302")
+    private lateinit var mSocket: Socket
 
 
     private val binding: ActivityChatBinding by lazy {
@@ -43,53 +38,22 @@ class ChatActivity : AppCompatActivity(){
             layoutInflater
         )
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         preferences = getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
 
-        //어댑터 연결
-        chatAdapter = ChatAdapter(this)//this?
-        binding.messageActivityRecyclerview.adapter = chatAdapter
-        binding.messageActivityRecyclerview.apply {
-            layoutManager = LinearLayoutManager(context)
-        }
-        binding.messageActivityRecyclerview.setHasFixedSize(true)
+        connectAdapter()
 
         if (savedInstanceState != null) {
-            hasConnection = savedInstanceState.getBoolean("hasConnection")
-            Log.e("has connection? ", "not null")
+            hasConnection = savedInstanceState.getBoolean("hasConnection")//화면 회전 등 화면 정도 담음
         }
-
         if (hasConnection) {
-
         } else {
-            Log.e("소켓 연결 시작 ", "not null")
-            //소켓연결
-            var socket = mSocket.connect()
-
-
-            //서버에 신호 보내는거같음 밑에 에밋 리스너들 실행
-            //socket.on은 수신
-            mSocket.on("connect user", onNewUser)
-            mSocket.on("chat message", onNewMessage)
-
-            val userId = JSONObject()
-            try {
-                userId.put("username", preferences.getString("name", "") + " Connected")
-                userId.put("roomName", "room_example")
-                Log.e("username",preferences.getString("name", "") + " Connected")
-
-                //socket.emit은 메세지 전송임
-                mSocket.emit("connect user", userId)//이거 하면 서버에 반응 떠야함
-                Log.e("hahah", socket.connected().toString())
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
-
+            socketConnection()//소켓연결
         }
-
         hasConnection = true
         //뭔가 설정..?
         supportActionBar!!.setDisplayShowTitleEnabled(false)
@@ -102,8 +66,6 @@ class ChatActivity : AppCompatActivity(){
         binding.messageActivityImageView.setOnClickListener{
             sendMessage()
         }
-
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
@@ -126,24 +88,21 @@ class ChatActivity : AppCompatActivity(){
             val profile_image: String
             val date_time: String
             try {
-                Log.e("asdasd", data.toString())
+                Log.e("onNewMessage, try", data.toString())
                 name = data.getString("name")
                 script = data.getString("script")
                 profile_image = data.getString("profile_image")
                 date_time = data.getString("date_time")
 
-
                 val format = ChatModel(name, script, profile_image, date_time)
-                chatAdapter.addItem(format)
+                chatAdapter.addItem(format)//어댑터에 추가
                 chatAdapter.notifyDataSetChanged()
-                Log.e("new me",name )
             } catch (e: Exception) {
                 return@Runnable
             }
         })
     }
 
-    //어플 키자마자 서버에  connect user 하고 프로젝트에 on new user 실행
     internal var onNewUser: Emitter.Listener = Emitter.Listener { args ->
         runOnUiThread(Runnable {
             val length = args.size
@@ -151,7 +110,6 @@ class ChatActivity : AppCompatActivity(){
             if (length == 0) {
                 return@Runnable
             }
-            //Here i'm getting weird error..................///////run :1 and run: 0
             var username = args[0].toString()
             try {
                 val `object` = JSONObject(username)
@@ -171,41 +129,58 @@ class ChatActivity : AppCompatActivity(){
         val sdf = SimpleDateFormat("yyyy-MM-dd")
         val getTime = sdf.format(date)
 
-        //판매자 이름 가져오기(intent)
-        //val name = intent.getStringExtra("seller_name")//인텐트 or preferences
-
-        //example에는 원래는 이미지 url이 들어가야할 자리
-
-        /*val item = preferences.getString("name","")
-            ?.let { ChatModel(it,binding.messageActivityEditText.text.toString(),"example", getTime) }
-        if (item != null) {
-            chatAdapter.addItem(item)//리스트에 메시지 넣기
-        }*/
-
-        val message = binding.messageActivityEditText.text.toString().trim({ it <= ' ' })
+        val message = binding.messageActivityEditText.text.toString().trim({ it <= ' ' })//입력한 메시지 가져오기
         if (TextUtils.isEmpty(message)) {
             return
         }
-        binding.messageActivityEditText.setText("")
+        binding.messageActivityEditText.setText("")//메시지 입력창 비우기
         val jsonObject = JSONObject()
         try {
             jsonObject.put("name", preferences.getString("name", ""))
             jsonObject.put("script", message)
             jsonObject.put("profile_image", "example")
             jsonObject.put("date_time", getTime)
-            jsonObject.put("roomName", "room_example")
+            jsonObject.put("roomName", "room_example")//룸이름
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-        Log.e("챗룸", "sendMessage: 1" + mSocket.emit("chat message", jsonObject))
-        preferences.getString("name", "")?.let { Log.e("sendmmm", it) }
+        mSocket.emit("chat message", jsonObject)
+        //chatAdapter.notifyDataSetChanged()
+    }
 
-        Log.e("editText: ", binding.messageActivityEditText.text.toString())
-        chatAdapter.notifyDataSetChanged()
-        //채팅 입력창 초기화
-            }
+    fun socketConnection(){
+        try {
+            mSocket = IO.socket("http://3.36.48.206:52207")//커넥션이 성공해야 한다고!!!!!!
+            //연결 왜 안되는데
+        } catch(e: URISyntaxException) {
+            e.printStackTrace()
+        }//소켓 연결됨?
+        mSocket.connect()//커넥션 성공했다!!! 와이파이 켰어야지 바보야,, 그리고 socket uninstall 하고 npm install socket.io@1로 설치함
 
-    /*fun socketConnection(){
-    }*/
+        mSocket.on("connect user", onNewUser)
+        mSocket.on("chat message", onNewMessage)//socket.on은 수신
+
+        val userId = JSONObject()
+        try {
+            userId.put("username", preferences.getString("name", "") + " Connected")
+            userId.put("roomName", "room_example")
+            Log.e("username",preferences.getString("name", "") + " Connected")
+
+            mSocket.emit("connect user", userId)//이거 하면 서버에 반응 떠야함/socket.emit은 메세지 전송임
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+    }
+
+    fun connectAdapter(){
+        //어댑터 연결
+        chatAdapter = ChatAdapter(this)//this?
+        binding.messageActivityRecyclerview.adapter = chatAdapter
+        binding.messageActivityRecyclerview.apply {
+            layoutManager = LinearLayoutManager(context)
+        }
+        binding.messageActivityRecyclerview.setHasFixedSize(true)
+
+    }
 
 }

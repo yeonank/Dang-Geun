@@ -59,8 +59,7 @@ class DetailActivity : AppCompatActivity(){
         //채팅하기 버튼 누르면!
         binding.button2.setOnClickListener {
             val intent = Intent(this, ChatActivity::class.java)
-            //intent.putExtra("seller_name", binding.tvName.text.toString())
-            editor.putString("name", binding.tvName.text.toString())
+            editor.putString("name", binding.tvName.text.toString())//이름 가져오기
             startActivity(intent)
             Log.e("detailActivity name:", binding.tvName.text.toString())
 
