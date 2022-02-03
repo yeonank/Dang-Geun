@@ -34,10 +34,10 @@ class ChatAdapter (private val context: Context) : RecyclerView.Adapter<Recycler
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view : View//LayoutInflater.from(context).inflate(R.layout.item_chat,parent,false)
 
-        if (viewType == 1){
+        if (viewType == 1){//내쪽 말풍선
             view = LayoutInflater.from(context).inflate(R.layout.my_chat,parent,false)
             return Holder(view)
-        }else{
+        }else{//반대쪽 말풍선
             view = LayoutInflater.from(context).inflate(R.layout.your_chat,parent,false)
             return Holder2(view)
         }
@@ -86,27 +86,24 @@ class ChatAdapter (private val context: Context) : RecyclerView.Adapter<Recycler
 
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //친구목록 모델의 변수들 정의하는부분
         val chat_Text:TextView = itemView.findViewById(R.id.chat_Text)
         val chat_Time:TextView = itemView.findViewById(R.id.chat_Time)
     }
 
     inner class Holder2(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        //친구목록 모델의 변수들 정의하는부분
         val chat_You_Image:ImageView = itemView?.findViewById(R.id.chat_You_Image)
         val chat_You_Name:TextView = itemView?.findViewById(R.id.chat_You_Name)
         val chat_Text:TextView = itemView?.findViewById(R.id.chat_Text)
-        val chat_Time:TextView = itemView?.findViewById(R.id.chat_Time)
+        val chat_Time:TextView = itemView?.findViewById(R.id.chat_Time)//binding으로 대체 가능?
     }
 
     override fun getItemViewType(position: Int): Int {//여기서 뷰타입을 1, 2로 바꿔서 지정해줘야 내채팅 너채팅을 바꾸면서 쌓을 수 있음
         preferences = context.getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
 
         //내 아이디와 arraylist의 name이 같다면 내꺼 아니면 상대꺼
-        return if (chatContent.get(position).name == preferences.getString("name", "")) {
+        return if (chatContent.get(position).name == preferences.getString("name", "")) {//나
             1
-        } else {
+        } else {//너
             2
         }
     }
