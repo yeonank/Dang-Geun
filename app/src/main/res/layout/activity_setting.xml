@@ -27,8 +27,8 @@
             android:textStyle="bold"
             android:text="프로필 설정" />
         <ImageButton
-            android:layout_width="20dp"
-            android:layout_height="16dp"
+            android:layout_width="18dp"
+            android:layout_height="14dp"
             android:id="@+id/check"
             android:layout_marginHorizontal="20dp"
             android:layout_gravity="center|right"
