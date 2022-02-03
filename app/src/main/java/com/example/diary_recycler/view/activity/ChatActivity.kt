@@ -31,7 +31,9 @@ class ChatActivity : AppCompatActivity(){
     internal lateinit var preferences: SharedPreferences//사용자 이름을 이걸로 저장할까..?
     private var hasConnection: Boolean = false
     private lateinit var mSocket: Socket
-
+    private var thread2: Thread? = null
+    private var startTyping = false
+    private var time = 2
 
     private val binding: ActivityChatBinding by lazy {
         ActivityChatBinding.inflate(
