@@ -11,9 +11,11 @@ import com.example.diary_recycler.databinding.ActivityLoginBinding
 import com.example.diary_recycler.databinding.ActivityWriteBinding
 import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.common.model.AuthError
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.common.util.Utility
 import com.kakao.sdk.user.UserApiClient
+import java.util.Objects.toString
 
 class LoginActivity : AppCompatActivity() {
 
@@ -72,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this, "앱이 요청 권한이 없음", Toast.LENGTH_SHORT).show()
                     }
                     else -> { // Unknown
-                        Toast.makeText(this, "기타 에러", Toast.LENGTH_SHORT).show()
+                        Log.e( "error", error.toString())
                     }
                 }
             }
@@ -82,6 +84,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
             }
+            else Log.e( "error", "로그인에러")
         }
 
 

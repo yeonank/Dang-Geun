@@ -19,13 +19,14 @@
             android:name=".view.activity.LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter> <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <data android:host="oauth"
-                    android:scheme="kakao{b0b0ad05500b939a4ae91c64848b80d3}" />
+                    android:scheme="kakaob0b0ad05500b939a4ae91c64848b80d3" />
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.WriteActivity" />
