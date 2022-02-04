@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "358504531639",
+    "project_id": "diary-recycler",
+    "storage_bucket": "diary-recycler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358504531639:android:5c8965c93e645b20bc6f32",
+        "android_client_info": {
+          "package_name": "com.example.diary_recycler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358504531639-8lg48lmgk3cc43jnjicdqokceggq7sb0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.diary_recycler",
+            "certificate_hash": "db880761a855bd4d4fa942cdd62c8d9e4d038fb8"
+          }
+        },
+        {
+          "client_id": "358504531639-26fdetouru7iq54bc9c579dl3btp3b66.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE4e_ACniw8FeCKZWHO-3mrQPTrhVdEIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358504531639-26fdetouru7iq54bc9c579dl3btp3b66.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

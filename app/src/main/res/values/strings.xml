@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Diary_Recycler</string>
     <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- kakao_native_app_key는 네이티브 앱키가 '12345'라면 'kakao12345'로 설정 -->
+    <string name="kakao_app_key">215d0f2c5c9ce3d53c01ee47aef42cc4</string>
+    <!-- 얘는 그냥 네이티브 앱키 그대로 입력하면 된다 -->
+    <string name="kakao_native_app_key">kakao215d0f2c5c9ce3d53c01ee47aef42cc4</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="google_web_client_id">358504531639-26fdetouru7iq54bc9c579dl3btp3b66.apps.googleusercontent.com</string>
 </resources>

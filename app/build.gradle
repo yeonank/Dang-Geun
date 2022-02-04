@@ -8,7 +8,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.myapplication1011"
+        applicationId "com.example.diary_recycler"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -49,8 +49,9 @@ dependencies {
     implementation 'androidx.mediarouter:mediarouter:1.2.5'
     testImplementation 'junit:junit:4.+'
 
-    implementation 'com.kakao.sdk:v2-user:2.0.1'
-
+    implementation 'com.kakao.sdk:v2-user:2.2.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation platform('com.google.firebase:firebase-bom:29.0.4')
     implementation 'com.amazonaws:aws-android-sdk-mobile-client:2.13.5'
     implementation 'com.amazonaws:aws-android-sdk-cognito:2.13.5'
     implementation 'com.amazonaws:aws-android-sdk-s3:2.13.5'
@@ -63,8 +64,12 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation "androidx.core:core-ktx:1.7.0"
-
+    implementation 'com.google.firebase:firebase-auth:19.0.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation('io.socket:socket.io-client:2.0.0') {
         exclude group: 'org.json', module: 'json'
     }
 }
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
