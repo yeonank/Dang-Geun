@@ -7,6 +7,6 @@ import com.kakao.sdk.common.KakaoSdk
 class KakaoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        KakaoSdk.init(this, "b0b0ad05500b939a4ae91c64848b80d3") //네이티브 앱 키
+        KakaoSdk.init(this, "b6ab767025be19ef9c317db1b201e072") //네이티브 앱 키
     }
 }

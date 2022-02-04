@@ -30,6 +30,8 @@ class LoginActivity : AppCompatActivity() {
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
                 Toast.makeText(this, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
+                Log.e("error1", error.printStackTrace().toString())
+                error.printStackTrace()
             }
             else if (tokenInfo != null) {
                 Toast.makeText(this, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
@@ -40,8 +42,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
-//        val keyHash = Utility.getKeyHash(this)
-//        Log.d("Hash", keyHash)
+        val keyHash = Utility.getKeyHash(this)
+        Log.d("Hash", keyHash)
 
 
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
@@ -73,6 +75,8 @@ class LoginActivity : AppCompatActivity() {
                     }
                     else -> { // Unknown
                         Toast.makeText(this, "기타 에러", Toast.LENGTH_SHORT).show()
+                        Log.e("error login", error.toString())
+                        Log.e("error2", error.printStackTrace().toString())
                     }
                 }
             }
@@ -90,7 +94,6 @@ class LoginActivity : AppCompatActivity() {
         binding.login.setOnClickListener {
             if(LoginClient.instance.isKakaoTalkLoginAvailable(this)){
                 LoginClient.instance.loginWithKakaoTalk(this, callback = callback)
-
 
             }else{
                 LoginClient.instance.loginWithKakaoAccount(this, callback = callback)
