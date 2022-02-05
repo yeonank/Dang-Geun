@@ -152,7 +152,7 @@ class ChatActivity : AppCompatActivity(){
 
     fun socketConnection(){
         try {
-            mSocket = IO.socket("http://3.36.48.206:52207")//커넥션이 성공해야 한다고!!!!!!
+            mSocket = IO.socket("http://ec2-44-201-147-197.compute-1.amazonaws.com:5000/")//커넥션이 성공해야 한다고!!!!!!
             //연결 왜 안되는데
         } catch(e: URISyntaxException) {
             e.printStackTrace()
