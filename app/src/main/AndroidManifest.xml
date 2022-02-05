@@ -28,12 +28,13 @@
             android:name=".GoogleLoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data
-                    android:host="oauth"
-                    android:scheme="@string/kakao_native_app_key" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+            <intent-filter>
+                <data android:host="oauth"
+                    android:scheme="kakaob6ab767025be19ef9c317db1b201e072" />
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.WriteActivity" />
