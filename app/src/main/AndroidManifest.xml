@@ -25,16 +25,14 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".GoogleLoginActivity"
+            android:name=".view.activity.GoogleLoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <data android:host="oauth"
-                    android:scheme="kakaob6ab767025be19ef9c317db1b201e072" />
+                    android:scheme="@string/kakao_native_app_key" />
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.WriteActivity" />
