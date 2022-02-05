@@ -15,6 +15,8 @@ import com.example.diary_recycler.SwipeData
 import com.example.diary_recycler.databinding.FragmentProfileBinding
 import com.example.diary_recycler.view.activity.SettingActivity
 import com.example.diary_recycler.view.activity.WriteActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.kakao.sdk.user.UserApiClient
 
 class ProfileFragment : Fragment() {
@@ -25,6 +27,7 @@ class ProfileFragment : Fragment() {
             layoutInflater
         )
     }
+    private var mAuth: FirebaseAuth? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +35,25 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        initRecycler()
-        UserApiClient.instance.me { user, error ->
-            binding.nickname.text = "${user?.kakaoAccount?.profile?.nickname}"
-            val uri="${user?.kakaoAccount?.profile?.thumbnailImageUrl}"
-            Glide.with(this).load(uri).into(binding.imgProfile)
-        }
+        mAuth = FirebaseAuth.getInstance();
+        var user: FirebaseUser? = mAuth!!.currentUser
 
+
+        if(user!=null) {
+            binding.nickname.setText(user?.displayName.toString())
+            Glide.with(this).load(user?.photoUrl.toString()).into(binding.imgProfile)
+        }//구글 프로필 설정
+
+        UserApiClient.instance.me { user, error ->
+            if(user!=null) {
+                binding.nickname.text = "${user?.kakaoAccount?.profile?.nickname}"
+                val uri = "${user?.kakaoAccount?.profile?.thumbnailImageUrl}"
+                Glide.with(this).load(uri).into(binding.imgProfile)
+            }
+        }//카카오 프로필 설정
+
+
+        initRecycler()
         binding.imageButton.setOnClickListener{
             val settingActivity =  SettingActivity()
             val intent = Intent(context, settingActivity::class.java)
