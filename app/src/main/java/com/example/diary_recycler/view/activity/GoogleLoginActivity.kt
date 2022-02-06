@@ -85,8 +85,14 @@ class GoogleLoginActivity : AppCompatActivity() {
             ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "로그인 성공")
+
                     val user = auth!!.currentUser
+
+                    //서버에 보낼 정보
+                    //닉네임 : user.displayName
+                    //토큰 : idToken
+                    //이미지url : user.photoUrl
+
                     loginSuccess()
                 } else {
                     // If sign in fails, display a message to the user.
@@ -94,7 +100,9 @@ class GoogleLoginActivity : AppCompatActivity() {
                 }
             }
     }
+
     private fun loginSuccess(){
+
         val intent = Intent(this,MainActivity::class.java)
         startActivity(intent)
         finish()

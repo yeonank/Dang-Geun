@@ -3,6 +3,7 @@ package com.example.diary_recycler
 import retrofit2.Call
 import retrofit2.http.*
 
+
 data class ResponseDC(var result:String? = null)
 
 interface APIInterface {
@@ -21,4 +22,10 @@ interface APIInterface {
 
     @DELETE("/{id}")
     fun deleteRequest(@Path("id")id: String): Call<ResponseDC>
+
+
+    @FormUrlEncoded
+    @POST("/signup")
+    fun postSignUp(@FieldMap param: HashMap<String?, Any?>?): Call<Login?>?
+
 }
