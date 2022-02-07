@@ -7,11 +7,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 public class HttpClient {
     companion object {
         //통신할 서버 url
-        private const val baseUrl = "http://12.345.678.910"
+        private const  val url = "http://13.124.154.227:52970"
 
         //Retrofit 객체 초기화
         val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl(this.baseUrl)
+            .baseUrl(this.url)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

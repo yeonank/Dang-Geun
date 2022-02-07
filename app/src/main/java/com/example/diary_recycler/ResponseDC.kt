@@ -26,6 +26,6 @@ interface APIInterface {
 
     @FormUrlEncoded
     @POST("/signup")
-    fun postSignUp(@FieldMap param: HashMap<String?, Any?>?): Call<Login?>?
+    fun postSignUp(@FieldMap param: HashMap<String?, Any?>?): Call<SignUp>
 
 }
