@@ -112,71 +112,18 @@ class GoogleLoginActivity : AppCompatActivity() {
                             if (response.isSuccessful()) {
                                 val signup: SignUp? = response.body()
                                 val flag = signup?.code
-                                if (flag == 200) {
+                                if (flag == 200) { //보내기 성공
                                     Toast.makeText(
                                         applicationContext,
                                         "회원가입에 성공했습니다",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                   loginSuccess()
-                                } else if (flag == 301) {
+                                } else if (flag == 308) { //이메일 중복
                                     Toast.makeText(
-                                        applicationContext,
-                                        "이메일을 입력해주세요",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else if (flag == 302) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "이메일은 30자리 미만으로 입력해주세요",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else if (flag == 303) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "이메일 형식을 정확하게 입력해주세요",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else if (flag == 304) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "비밀번호를 다시 확인해주세요",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else if (flag == 305) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "비밀번호는 6~20자리를 입력해주세요",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else if (flag == 306) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "닉네임을 입력해주세요",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else if (flag == 307) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "닉네임은 최대 20자리를 입력해주세요",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else if (flag == 308) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "중복된 이메일입니다",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else if (flag == 309) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "중복된 닉네임입니다",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else if (flag == 310) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "타입을 다시 한 번 확인해주세요",
+                                        applicationContext, /
+                                        "이미 회원가입한 계정입니다", //로그인으로 넘어가기
+                                        loginSuccess()
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
