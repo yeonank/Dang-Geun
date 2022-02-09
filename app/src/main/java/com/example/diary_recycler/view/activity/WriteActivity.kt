@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.amazonaws.auth.CognitoCachingCredentialsProvider
@@ -67,7 +68,7 @@ class WriteActivity() : AppCompatActivity(){
 
         //데이터 homeFragment로 전송
         binding.btnSave.setOnClickListener {
-            if(content_et.text.toString().isNotEmpty()){
+            if(content_et.text.toString().isNotEmpty() && title_et.text.toString().isNotEmpty()){
                 Log.e("writeActivity.send", "data sending start")
                 // uploadFile()
 
@@ -94,6 +95,12 @@ class WriteActivity() : AppCompatActivity(){
                 home.setArticle()
 
                 Log.e("writeActivity.send", "data sending end")
+                }else if(content_et.text.toString().isNotEmpty()){
+                    Toast.makeText(this, "제목을 입력해주세요", Toast.LENGTH_SHORT).show()
+                }else if(title_et.text.toString().isNotEmpty()){
+                    Toast.makeText(this, "내용을 입력해주세요", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this, "내용, 제목을 입력해주세요", Toast.LENGTH_SHORT).show()
                 }
 
       finish()

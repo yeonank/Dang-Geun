@@ -52,6 +52,9 @@ class DetailActivity : AppCompatActivity(){
         binding.tvTitle.setText(data?.title)
         binding.tvContent.setText(data?.content)
         binding.tvDate.setText(data?.datetime.toString())
+
+        var title = binding.tvTitle.text.toString()
+        Log.e("title out: ", title);
         if(data?.img==null)
             Glide.with(this).load(R.drawable.placeholder).into(binding.imageView4)
         else Glide.with(this).load(data?.img).centerCrop().into(binding.imageView4)
@@ -60,6 +63,9 @@ class DetailActivity : AppCompatActivity(){
         binding.button2.setOnClickListener {
             val intent = Intent(this, ChatActivity::class.java)
             editor.putString("name", binding.tvName.text.toString())//이름 가져오기
+            editor.putString("roomName", title)
+
+            Log.e("title in: ", title + preferences.getString("roomName", "") + " end");
             startActivity(intent)
             Log.e("detailActivity name:", binding.tvName.text.toString())
 

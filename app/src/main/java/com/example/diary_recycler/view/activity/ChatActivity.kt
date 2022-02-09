@@ -128,7 +128,8 @@ class ChatActivity : AppCompatActivity(){
         preferences = getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
         val now = System.currentTimeMillis()
         val date = Date(now)
-        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        //val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val sdf = SimpleDateFormat("HH:MM")
         val getTime = sdf.format(date)
 
         val message = binding.messageActivityEditText.text.toString().trim({ it <= ' ' })//입력한 메시지 가져오기
@@ -142,7 +143,7 @@ class ChatActivity : AppCompatActivity(){
             jsonObject.put("script", message)
             jsonObject.put("profile_image", "example")
             jsonObject.put("date_time", getTime)
-            jsonObject.put("roomName", "room_example")//룸이름
+            jsonObject.put("roomName", preferences.getString("roomName", ""))//룸이름
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -165,8 +166,8 @@ class ChatActivity : AppCompatActivity(){
         val userId = JSONObject()
         try {
             userId.put("username", preferences.getString("name", "") + " Connected")
-            userId.put("roomName", "room_example")
-            Log.e("username",preferences.getString("name", "") + " Connected")
+            userId.put("roomName", preferences.getString("roomName", ""))
+            Log.e("username",preferences.getString("name", "") + " Connected" + preferences.getString("roomName", ""))
 
             mSocket.emit("connect user", userId)//이거 하면 서버에 반응 떠야함/socket.emit은 메세지 전송임
         } catch (e: JSONException) {
