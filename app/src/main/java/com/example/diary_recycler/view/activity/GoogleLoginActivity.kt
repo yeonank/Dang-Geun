@@ -76,7 +76,7 @@ class GoogleLoginActivity : AppCompatActivity() {
 
         Log.e("retrofit login", "start2")
 
-        server.userLogin("", "", "", "").enqueue(object: retrofit2.Callback<Login> {
+        /*server.userLogin("").enqueue(object: retrofit2.Callback<Login> {
             override fun onResponse(
                 call: retrofit2.Call<Login>,
                 response: retrofit2.Response<Login>
@@ -93,7 +93,7 @@ class GoogleLoginActivity : AppCompatActivity() {
                 Log.e("retrofit login", "start4")
             }
 
-        })
+        })*/
 
 
     }

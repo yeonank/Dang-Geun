@@ -35,7 +35,7 @@ class TestFragment: Fragment() {
     }
 
     fun initTest(){
-        val url = "http://13.124.154.227:52970"
+        val url = "http://ec2-44-201-147-197.compute-1.amazonaws.com:3000/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(url)
@@ -62,7 +62,7 @@ class TestFragment: Fragment() {
         }
 
         binding.button4.setOnClickListener{
-            server.postRequest("id", "password").enqueue((object:Callback<ResponseDC>{
+            server.postRequest("i", "j", "k", "l").enqueue((object:Callback<ResponseDC>{
                 override fun onFailure(call: Call<ResponseDC>, t: Throwable) {
 
                 }

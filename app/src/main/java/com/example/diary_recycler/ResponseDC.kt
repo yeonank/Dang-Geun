@@ -7,13 +7,15 @@ import retrofit2.http.*
 data class ResponseDC(var result:String? = null)
 
 interface APIInterface {
-    @GET("/")
+    @GET("/main")
     fun getRequest(@Query("name") name: String): Call<ResponseDC>
 
     @FormUrlEncoded
-    @POST("/")
-    fun postRequest(@Field("id")id: String,
-                    @Field("password")password: String):Call<ResponseDC>
+    @POST("/join/login")
+    fun postRequest(@Field("userToken") userToken:String,
+                    @Field("userEmail") userEmail:String,
+                    @Field("userName") userName:String,
+                    @Field("profileImg") profileImg:String):Call<ResponseDC>
 
     @FormUrlEncoded
     @PUT("/{id}")

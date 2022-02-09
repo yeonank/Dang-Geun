@@ -6,7 +6,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
-public interface LoginService {
+interface LoginService {
 
     @FormUrlEncoded
     @POST("/join/login")
@@ -18,7 +18,7 @@ public interface LoginService {
         /*@Field("userid") userid:String,
         @Field("userpw") userpw:String*/
 
-    ) : Call<Login>
+    ) : Call<ResponseDC>
 
     //fun userLogin(@Body data: LoginData) : Call<Login>
 }
