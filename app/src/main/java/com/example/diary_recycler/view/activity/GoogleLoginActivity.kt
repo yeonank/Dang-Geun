@@ -1,18 +1,13 @@
 package com.example.diary_recycler.view.activity
 
-import android.R.id
 import android.content.Intent
 import android.os.Bundle
 import android.telecom.Call
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.diary_recycler.APIInterface
-import com.example.diary_recycler.R
-import com.example.diary_recycler.ResponseDC
-import com.example.diary_recycler.SignUp
+import com.example.diary_recycler.*
 import com.example.diary_recycler.databinding.ActivityLoginBinding
-import com.example.diary_recycler.view.HttpClient.Companion.retrofit
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -25,6 +20,8 @@ import com.kakao.sdk.auth.LoginClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.common.util.Utility
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.security.auth.callback.Callback
 
 
@@ -33,7 +30,8 @@ class GoogleLoginActivity : AppCompatActivity() {
     val GOOGLE_REQUEST_CODE = 99
     val TAG = "googleLogin"
     private lateinit var googleSignInClient: GoogleSignInClient
-    var server = retrofit.create(APIInterface::class.java)
+
+    //var server = retrofit.create(APIInterface::class.java)
 
     private val binding: ActivityLoginBinding by lazy {
         ActivityLoginBinding.inflate(
@@ -54,6 +52,9 @@ class GoogleLoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         binding.login.setOnClickListener {
             signIn()
+            startLogin()
+
+
         }
 
         binding.kakaologin.setOnClickListener {
@@ -63,6 +64,38 @@ class GoogleLoginActivity : AppCompatActivity() {
                 LoginClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
+    }
+
+    private fun startLogin() {
+        Log.e("retrofit login", "start")
+        var retrofit = Retrofit.Builder()
+            .baseUrl("http://ec2-44-201-147-197.compute-1.amazonaws.com:3000/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        var server = retrofit.create(LoginService::class.java)
+
+        Log.e("retrofit login", "start2")
+
+        server.userLogin("", "", "", "").enqueue(object: retrofit2.Callback<Login> {
+            override fun onResponse(
+                call: retrofit2.Call<Login>,
+                response: retrofit2.Response<Login>
+            ) {
+                Log.e("retrofit login", "start3")
+                var login: Login? = response.body()
+                Log.d("LOGIN","msg : "+login?.msg)
+                Log.d("LOGIN","code : "+login?.code)
+                Toast.makeText(this@GoogleLoginActivity, "로그인 성공", Toast.LENGTH_SHORT)
+            }
+
+            override fun onFailure(call: retrofit2.Call<Login>, t: Throwable) {
+                Toast.makeText(this@GoogleLoginActivity, "로그인 실패", Toast.LENGTH_SHORT)
+                Log.e("retrofit login", "start4")
+            }
+
+        })
+
+
     }
 
     private fun signIn() {

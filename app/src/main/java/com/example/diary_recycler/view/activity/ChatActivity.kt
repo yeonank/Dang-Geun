@@ -28,7 +28,7 @@ import java.util.*
 
 class ChatActivity : AppCompatActivity(){
     lateinit var chatAdapter: ChatAdapter
-    internal lateinit var preferences: SharedPreferences//사용자 이름을 이걸로 저장할까..?
+    internal lateinit var preferences: SharedPreferences
     private var hasConnection: Boolean = false
     private var thread2: Thread? = null
     private var startTyping = false
@@ -46,6 +46,7 @@ class ChatActivity : AppCompatActivity(){
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         preferences = getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
+        Log.e("this is ChatActivity", "testing preferences roomName" + preferences.getString("roomName", "")+"이다")
 
         connectAdapter()
 
