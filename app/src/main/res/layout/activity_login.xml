@@ -7,14 +7,16 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:gravity="center">
+
     <ImageButton
         android:id="@+id/kakaologin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/kakao_login_medium_wide"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
