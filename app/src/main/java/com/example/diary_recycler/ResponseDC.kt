@@ -6,7 +6,7 @@ import retrofit2.http.*
 
 data class ResponseDC(var result:String? = null)
 
-interface APIInterface {
+interface ServerInterface {
     @GET("/main")
     fun getRequest(@Query("name") name: String): Call<ResponseDC>
 
