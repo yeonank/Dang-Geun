@@ -12,5 +12,5 @@ this is a file for required list
 
 데이터 클래스 파일 나누기
 어댑터 클래스 나누기
-preferences 문제 해결
 
+preferences 에러 해결 on ChatActivity
