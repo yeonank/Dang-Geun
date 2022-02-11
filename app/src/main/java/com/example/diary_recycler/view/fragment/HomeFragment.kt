@@ -77,19 +77,14 @@ class HomeFragment : Fragment() {
 
 
     }
-    fun setArticle(){//insert
+    fun setArticle(){//insert//select
         var content = arguments?.getString("content")
         var title = arguments?.getString("title")
         var img = arguments?.getString("img")
-        //initRecycler()
+
         if (content != null) {
-            Log.e("HomeFrag.setArticle", content + " " + title)
-            /*datas.apply{
-                add(WriteData(1, "first", content, System.currentTimeMillis()))
-            }*/
 
             val article = title?.let { WriteData(null, it, content, System.currentTimeMillis(), img ) }
-            //helper = SqliteHelper(this, "article", null, 1)
 
             if (article != null) {
                 helper.insertArticle(article)
@@ -97,9 +92,7 @@ class HomeFragment : Fragment() {
 
             swipeadapter.datas.clear()
             swipeadapter.datas.addAll(helper.selectArticle())//swipeadapter 비우고 입력한 값 select 해서 추가
-
             swipeadapter.notifyDataSetChanged()
-            //initRecycler()
             Log.e("HomeFrag.setArticle", "finished")
 
         }else{

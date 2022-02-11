@@ -19,7 +19,6 @@ class SqliteHelper(context: Context?, name: String?, factory: SQLiteDatabase.Cur
 
     //insert 메소드
     fun insertArticle(article: WriteData) {
-        Log.e("this is insertArticle", "hey")
         val values = ContentValues()
         //넘겨줄 컬럼의 매개변수 지정
         values.put("title", article.title)

@@ -10,6 +10,9 @@ interface ServerInterface {
     @GET("/main")
     fun getRequest(@Query("name") name: String): Call<ResponseDC>
 
+    @GET("/post")
+    fun getPostRequest(@Query("name") name: String): Call<ResponseDC>
+
     @FormUrlEncoded
     @POST("/join/login")
     fun loginRequest(@Field("userToken") userToken:String,
@@ -19,7 +22,7 @@ interface ServerInterface {
 
     @FormUrlEncoded
     @POST("/post/post")
-    fun postRequest(@Field("userID") userID:String,
+    fun postRequest(@Field("userId") userId:String,
                     @Field("title") title:String,
                     @Field("content") content:String,
                     @Field("contentImg") contentImg:String,
@@ -32,10 +35,5 @@ interface ServerInterface {
 
     @DELETE("/{id}")
     fun deleteRequest(@Path("id")id: String): Call<ResponseDC>
-
-
-    @FormUrlEncoded
-    @POST("/signup")
-    fun postSignUp(@FieldMap param: HashMap<String?, Any?>?): Call<SignUp>
 
 }

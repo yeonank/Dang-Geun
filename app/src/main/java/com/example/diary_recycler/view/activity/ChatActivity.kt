@@ -130,7 +130,7 @@ class ChatActivity : AppCompatActivity(){
         val now = System.currentTimeMillis()
         val date = Date(now)
         //val sdf = SimpleDateFormat("yyyy-MM-dd")
-        val sdf = SimpleDateFormat("HH:MM")
+        val sdf = SimpleDateFormat("hh:mm")
         val getTime = sdf.format(date)
 
         val message = binding.messageActivityEditText.text.toString().trim({ it <= ' ' })//입력한 메시지 가져오기

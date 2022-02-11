@@ -27,10 +27,11 @@ import com.example.diary_recycler.databinding.ActivityWriteBinding
 import com.example.diary_recycler.view.RetrofitClient
 import com.example.diary_recycler.view.fragment.HomeFragment
 import java.io.File
+import java.text.SimpleDateFormat
 import java.util.*
 
 
-
+//writeActivity에서 postinsert 함
 class WriteActivity() : AppCompatActivity(){
     var helper:SqliteHelper? = null
     val PERMISSION_Album = 101
@@ -201,19 +202,27 @@ fun requirePermissions(permissions: Array<String>, requestCode: Int) {
 
     }
 
-    fun postInsert(tite:String, content:String, img:String){
+    fun postInsert(title:String, content:String, img:String){
         Log.e("retrofit postInsert", "start")
         val retrofit1 = RetrofitClient.getClient()
         var server = retrofit1?.create(ServerInterface::class.java)
         var preferences = getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
         var email = preferences.getString("email", "")
+        //날짜설정
+
+        val now = System.currentTimeMillis()
+        val date = Date(now)
+
+        val sdf = SimpleDateFormat("yyyy.MM.dd hh:mm:ss")
+        val created = sdf.format(date)
+        Log.e("now: ", created)
         if (email != null) {
             Log.e("email: ", email)
         }else{
             Log.e("email", "empty")
         }
 
-        /*server?.postRequest(email, title, content, "", "")?.enqueue((object: retrofit2.Callback<ResponseDC> {
+        server?.postRequest("email", title, content, img, created)?.enqueue((object: retrofit2.Callback<ResponseDC> {
             override fun onFailure(call: retrofit2.Call<ResponseDC>, t: Throwable) {
 
             }
@@ -221,7 +230,7 @@ fun requirePermissions(permissions: Array<String>, requestCode: Int) {
                 Log.d("response : ", response?.body().toString())
                 //Toast.makeText(this@GoogleLoginActivity, "서버 연결 성공", Toast.LENGTH_SHORT)
             }
-        }))*/
+        }))
     }
 
 
