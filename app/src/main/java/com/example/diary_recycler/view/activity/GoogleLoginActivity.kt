@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.diary_recycler.*
+import com.example.diary_recycler.dataClass.Login
 import com.example.diary_recycler.databinding.ActivityLoginBinding
 import com.example.diary_recycler.view.RetrofitClient
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -80,11 +81,11 @@ class GoogleLoginActivity : AppCompatActivity() {
 
 
 
-        server?.loginRequest("", userEmail, userNickname, "")?.enqueue((object: retrofit2.Callback<ResponseDC> {
-            override fun onFailure(call: retrofit2.Call<ResponseDC>, t: Throwable) {
+        server?.loginRequest("", userEmail, userNickname, "")?.enqueue((object: retrofit2.Callback<Login> {
+            override fun onFailure(call: retrofit2.Call<Login>, t: Throwable) {
 
             }
-            override fun onResponse(call: retrofit2.Call<ResponseDC>, response: retrofit2.Response<ResponseDC>) {
+            override fun onResponse(call: retrofit2.Call<Login>, response: retrofit2.Response<Login>) {
                 Log.d("response : ", response?.body().toString())
                 Toast.makeText(this@GoogleLoginActivity, "서버 연결 성공", Toast.LENGTH_SHORT)
             }

@@ -1,6 +1,5 @@
 package com.example.diary_recycler.view.fragment
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,8 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diary_recycler.*
+import com.example.diary_recycler.adapter.SwipeAdapter
+import com.example.diary_recycler.dataClass.WriteData
 import com.example.diary_recycler.databinding.FragmentHomeBinding
-import com.example.diary_recycler.view.RetrofitClient
 import com.example.diary_recycler.view.activity.WriteActivity
 
 class HomeFragment : Fragment() {

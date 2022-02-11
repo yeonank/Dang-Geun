@@ -1,6 +1,5 @@
 package com.example.diary_recycler.view.activity
 
-import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -16,13 +15,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.diary_recycler.R
 import com.example.diary_recycler.SqliteHelper
-import com.example.diary_recycler.WriteData
+import com.example.diary_recycler.dataClass.WriteData
 import com.example.diary_recycler.databinding.ActivityDetailBinding
 
 
 class DetailActivity : AppCompatActivity(){
     var helper: SqliteHelper? = null
-    var data : WriteData ?= null
+    var data : WriteData?= null
     internal lateinit var preferences: SharedPreferences
 
     private val binding: ActivityDetailBinding by lazy {

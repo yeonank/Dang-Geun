@@ -23,6 +23,7 @@ import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.AmazonS3Client
 import com.bumptech.glide.Glide
 import com.example.diary_recycler.*
+import com.example.diary_recycler.adapter.SwipeAdapter
 import com.example.diary_recycler.databinding.ActivityWriteBinding
 import com.example.diary_recycler.view.RetrofitClient
 import com.example.diary_recycler.view.fragment.HomeFragment

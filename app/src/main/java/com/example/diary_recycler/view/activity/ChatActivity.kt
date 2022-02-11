@@ -1,7 +1,6 @@
 package com.example.diary_recycler.view.activity
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -10,13 +9,10 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.diary_recycler.ChatAdapter
-import com.example.diary_recycler.ChatModel
-import com.example.diary_recycler.SwipeAdapter
+import com.example.diary_recycler.adapter.ChatAdapter
+import com.example.diary_recycler.dataClass.ChatModel
 import com.example.diary_recycler.databinding.ActivityChatBinding
-import com.example.diary_recycler.databinding.ActivityWriteBinding
 import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
