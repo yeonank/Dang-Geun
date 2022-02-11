@@ -63,7 +63,7 @@ class TestFragment: Fragment() {
         }
 
         binding.button4.setOnClickListener{
-            server?.postRequest("i", "j", "k", "l")?.enqueue((object:Callback<ResponseDC>{
+            server?.loginRequest("i", "j", "k", "l")?.enqueue((object:Callback<ResponseDC>{
                 override fun onFailure(call: Call<ResponseDC>, t: Throwable) {
 
                 }

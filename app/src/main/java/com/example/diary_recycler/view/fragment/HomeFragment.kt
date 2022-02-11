@@ -1,5 +1,6 @@
 package com.example.diary_recycler.view.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diary_recycler.*
 import com.example.diary_recycler.databinding.FragmentHomeBinding
+import com.example.diary_recycler.view.RetrofitClient
 import com.example.diary_recycler.view.activity.WriteActivity
 
 class HomeFragment : Fragment() {
@@ -39,7 +41,7 @@ class HomeFragment : Fragment() {
         }
 
 
-    private fun initRecycler() {
+    private fun initRecycler() {//select
         swipeadapter = SwipeAdapter(requireContext())
         helper = SqliteHelper(getActivity(), "article", null, 1)
         swipeadapter.datas.addAll(helper.selectArticle())//helper의 select값을 swipeadater의 datas에 넣는다.
@@ -75,7 +77,7 @@ class HomeFragment : Fragment() {
 
 
     }
-    fun setArticle(){
+    fun setArticle(){//insert
         var content = arguments?.getString("content")
         var title = arguments?.getString("title")
         var img = arguments?.getString("img")

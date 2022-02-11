@@ -12,10 +12,18 @@ interface ServerInterface {
 
     @FormUrlEncoded
     @POST("/join/login")
-    fun postRequest(@Field("userToken") userToken:String,
+    fun loginRequest(@Field("userToken") userToken:String,
                     @Field("userEmail") userEmail:String,
                     @Field("userName") userName:String,
                     @Field("profileImg") profileImg:String):Call<ResponseDC>
+
+    @FormUrlEncoded
+    @POST("/post/post")
+    fun postRequest(@Field("userID") userID:String,
+                    @Field("title") title:String,
+                    @Field("content") content:String,
+                    @Field("contentImg") contentImg:String,
+                    @Field("created") created:String):Call<ResponseDC>
 
     @FormUrlEncoded
     @PUT("/{id}")

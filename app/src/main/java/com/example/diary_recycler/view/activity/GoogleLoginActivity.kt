@@ -1,5 +1,6 @@
 package com.example.diary_recycler.view.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.telecom.Call
@@ -70,15 +71,22 @@ class GoogleLoginActivity : AppCompatActivity() {
         var userNickname = input.get("nickname").toString()
         var userToken = input.get("token").toString()
         Log.e("hashmap ", userEmail + " " + userNickname + " " + userToken)
+
+        var preferences = getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
+        preferences.edit().putString("email", userEmail)
+        preferences.getString("email", "")?.let { Log.e("email: Login", it) }
         val retrofit1 = RetrofitClient.getClient()
         var server = retrofit1?.create(ServerInterface::class.java)
 
-        server?.postRequest("", userEmail, userNickname, "")?.enqueue((object: retrofit2.Callback<ResponseDC> {
+
+
+        server?.loginRequest("", userEmail, userNickname, "")?.enqueue((object: retrofit2.Callback<ResponseDC> {
             override fun onFailure(call: retrofit2.Call<ResponseDC>, t: Throwable) {
 
             }
             override fun onResponse(call: retrofit2.Call<ResponseDC>, response: retrofit2.Response<ResponseDC>) {
                 Log.d("response : ", response?.body().toString())
+                Toast.makeText(this@GoogleLoginActivity, "서버 연결 성공", Toast.LENGTH_SHORT)
             }
         }))
 
